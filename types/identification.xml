@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<cd:Record name="identification" format="binary" last-modified="2017-03-29" xmlns:cd="http://www.stcorp.nl/coda/definition/2008/07">
+  <cd:Description>Identification section</cd:Description>
+  <cd:BitSize>8 * int(./length)</cd:BitSize>
+  <cd:Field name="length">
+    <cd:Integer>
+      <cd:Description>Length of section 1</cd:Description>
+      <cd:NativeType>uint32</cd:NativeType>
+      <cd:ByteSize>3</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="master_table">
+    <cd:Integer>
+      <cd:Description>Bufr master table (zero if standard WMO FM 94-IX BUFR tables are used)</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="centre">
+    <cd:Integer>
+      <cd:Description>Identification of originating/generating centre</cd:Description>
+      <cd:NativeType>uint16</cd:NativeType>
+      <cd:ByteSize>2</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="sub_centre">
+    <cd:Integer>
+      <cd:Description>Identification of originating/generating sub-centre</cd:Description>
+      <cd:NativeType>uint16</cd:NativeType>
+      <cd:ByteSize>2</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="update">
+    <cd:Integer>
+      <cd:Description>Update sequence number (zero for original BUFR messages; incremented by one for updates)</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="optional_section">
+    <cd:Integer>
+      <cd:Description>Bit 1 = 0 No optional section; Bit 1 = 1 Optional section follows</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:BitSize>1</cd:BitSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="reserved">
+    <cd:Raw>
+      <cd:BitSize>7</cd:BitSize>
+    </cd:Raw>
+    <cd:Hidden/>
+  </cd:Field>
+  <cd:Field name="category">
+    <cd:Integer>
+      <cd:Description>Data Category (Table A)</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="sub_category">
+    <cd:Integer>
+      <cd:Description>International data sub-category</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="local_sub_category">
+    <cd:Integer>
+      <cd:Description>Local sub-category</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="master_table_version">
+    <cd:Integer>
+      <cd:Description>Version number of master table used (currently 12 for WMO FM 94-IX Ext. BUFR tables)</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="local_tables_version">
+    <cd:Integer>
+      <cd:Description>Version number of local tables used to augment the master table in use</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="year">
+    <cd:Integer>
+      <cd:Description>Year (4 digits)</cd:Description>
+      <cd:NativeType>uint16</cd:NativeType>
+      <cd:ByteSize>2</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="month">
+    <cd:Integer>
+      <cd:Description>Month</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="day">
+    <cd:Integer>
+      <cd:Description>Day</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="hour">
+    <cd:Integer>
+      <cd:Description>Hour</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="minute">
+    <cd:Integer>
+      <cd:Description>Minute</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="second">
+    <cd:Integer>
+      <cd:Description>Second</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="local">
+    <cd:Raw>
+      <cd:BitSize><![CDATA[(int(../length) - 22) * 8]]></cd:BitSize>
+    </cd:Raw>
+  </cd:Field>
+</cd:Record>

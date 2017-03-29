@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<cd:Record name="data" format="binary" last-modified="2017-03-29" xmlns:cd="http://www.stcorp.nl/coda/definition/2008/07">
+  <cd:Description>Data section</cd:Description>
+  <cd:BitSize>8 * int(./length)</cd:BitSize>
+  <cd:Field name="length">
+    <cd:Integer>
+      <cd:Description>Length of section in bytes</cd:Description>
+      <cd:NativeType>uint32</cd:NativeType>
+      <cd:ByteSize>3</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="reserved">
+    <cd:Raw>
+      <cd:Description>Set to zero (reserved)</cd:Description>
+      <cd:BitSize>8</cd:BitSize>
+    </cd:Raw>
+    <cd:Hidden/>
+  </cd:Field>
+  <cd:Field name="data">
+    <cd:Raw>
+      <cd:Description>Binary data as defined by sequence descriptors</cd:Description>
+      <cd:BitSize><![CDATA[(int(../length) - 4) * 8]]></cd:BitSize>
+    </cd:Raw>
+  </cd:Field>
+</cd:Record>

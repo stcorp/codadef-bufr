@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<cd:ProductClass name="BUFR" last-modified="2017-03-28" xmlns:cd="http://www.stcorp.nl/coda/definition/2008/07">
+  <cd:Description>BUFR File Format</cd:Description>
+  <cd:ProductType name="BUFR">
+    <cd:Description>BUFR file</cd:Description>
+    <cd:ProductDefinition id="BUFR" format="binary" version="0">
+      <cd:Description>https://www.wmo.int/pages/prog/gcos/documents/gruanmanuals/ECMWF/bufr_user_guide.pdf</cd:Description>
+      <cd:DetectionRule>
+        <cd:MatchData offset="0">BUFR</cd:MatchData>
+        <cd:MatchData offset="7">\004</cd:MatchData>
+      </cd:DetectionRule>
+    </cd:ProductDefinition>
+  </cd:ProductType>
+</cd:ProductClass>

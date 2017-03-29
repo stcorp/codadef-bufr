@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<cd:Record name="description" format="binary" last-modified="2017-03-29" xmlns:cd="http://www.stcorp.nl/coda/definition/2008/07">
+  <cd:Description>Data description section</cd:Description>
+  <cd:BitSize>8 * int(./length)</cd:BitSize>
+  <cd:Field name="length">
+    <cd:Integer>
+      <cd:Description>Length of section in bytes</cd:Description>
+      <cd:NativeType>uint32</cd:NativeType>
+      <cd:ByteSize>3</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="reserved_1">
+    <cd:Raw>
+      <cd:Description>Set to zero (reserved)</cd:Description>
+      <cd:BitSize>8</cd:BitSize>
+    </cd:Raw>
+    <cd:Hidden/>
+  </cd:Field>
+  <cd:Field name="num_data_subsets">
+    <cd:Integer>
+      <cd:Description>Number of data subsets</cd:Description>
+      <cd:NativeType>uint16</cd:NativeType>
+      <cd:ByteSize>2</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="observed">
+    <cd:Integer>
+      <cd:Description>Bit 1 = 1 Observed data; Bit 1 = 0 Other data</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:BitSize>1</cd:BitSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="compressed">
+    <cd:Integer>
+      <cd:Description>Bit 2 = 1 Compressed data; Bit 2 = 0 Non compressed data</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:BitSize>1</cd:BitSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="reserved_2">
+    <cd:Raw>
+      <cd:BitSize>6</cd:BitSize>
+    </cd:Raw>
+    <cd:Hidden/>
+  </cd:Field>
+  <cd:Field name="descriptor">
+    <cd:Array>
+      <cd:Dimension>(int(../length) - 7) / 2</cd:Dimension>
+      <cd:Record>
+        <cd:Field name="F">
+          <cd:Integer>
+            <cd:Description>If F = 0, the descriptor is an element descriptor and values of X and Y define entries in Bufr Table B. For F = 1, the descriptor is a replication descriptor. If F = 2, the descriptor is one of the operators from bufr Table C. F = 3 means that the descriptor represents the sequence descriptor from Bufr Table D.</cd:Description>
+            <cd:NativeType>uint8</cd:NativeType>
+            <cd:BitSize>2</cd:BitSize>
+          </cd:Integer>
+        </cd:Field>
+        <cd:Field name="X">
+          <cd:Integer>
+            <cd:Description>X stands for class of elements in the range from 0-63</cd:Description>
+            <cd:NativeType>uint8</cd:NativeType>
+            <cd:BitSize>6</cd:BitSize>
+          </cd:Integer>
+        </cd:Field>
+        <cd:Field name="Y">
+          <cd:Integer>
+            <cd:Description>Y is an entry within class 0-255</cd:Description>
+            <cd:NativeType>uint8</cd:NativeType>
+            <cd:BitSize>8</cd:BitSize>
+          </cd:Integer>
+        </cd:Field>
+      </cd:Record>
+    </cd:Array>
+  </cd:Field>
+</cd:Record>

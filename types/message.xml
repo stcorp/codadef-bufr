@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<cd:Record name="message" format="binary" last-modified="2017-03-28" xmlns:cd="http://www.stcorp.nl/coda/definition/2008/07">
+  <cd:BitSize>8 * int(./length)</cd:BitSize>
+  <cd:Field name="bufr">
+    <cd:Text>
+      <cd:Description>BUFR four letters in CCITT International Alphabet No.5</cd:Description>
+      <cd:ByteSize>4</cd:ByteSize>
+      <cd:FixedValue>BUFR</cd:FixedValue>
+    </cd:Text>
+  </cd:Field>
+  <cd:Field name="length">
+    <cd:Integer>
+      <cd:Description>Total length of Bufr message in bytes</cd:Description>
+      <cd:NativeType>uint32</cd:NativeType>
+      <cd:ByteSize>3</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="edition">
+    <cd:Integer>
+      <cd:Description>Bufr Edition number (currently 4)</cd:Description>
+      <cd:NativeType>uint8</cd:NativeType>
+      <cd:ByteSize>1</cd:ByteSize>
+    </cd:Integer>
+  </cd:Field>
+  <cd:Field name="identification">
+    <cd:NamedType id="identification"/>
+  </cd:Field>
+  <cd:Field name="optional">
+    <cd:NamedType id="optional"/>
+    <cd:Available>int(./identification/optional_section) == 1</cd:Available>
+  </cd:Field>
+  <cd:Field name="description">
+    <cd:NamedType id="description"/>
+  </cd:Field>
+  <cd:Field name="data">
+    <cd:NamedType id="data"/>
+  </cd:Field>
+  <cd:Field name="end">
+    <cd:Text>
+      <cd:Description>"7777" (coded according to the CCITTIA No 5)</cd:Description>
+      <cd:ByteSize>4</cd:ByteSize>
+      <cd:FixedValue>7777</cd:FixedValue>
+    </cd:Text>
+  </cd:Field>
+</cd:Record>

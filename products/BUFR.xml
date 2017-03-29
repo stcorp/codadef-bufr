@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<cd:ProductDefinition id="BUFR" format="binary" last-modified="2017-03-28" xmlns:cd="http://www.stcorp.nl/coda/definition/2008/07">
+  <cd:Array>
+    <cd:Dimension><![CDATA[$num_messages]]></cd:Dimension>
+    <cd:NamedType id="message"/>
+  </cd:Array>
+  <cd:ProductVariable name="num_messages">
+    <cd:Init><![CDATA[$num_messages = unboundindex(/, byteoffset(.) >= filesize())]]></cd:Init>
+  </cd:ProductVariable>
+</cd:ProductDefinition>
